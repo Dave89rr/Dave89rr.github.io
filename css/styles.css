@@ -4489,6 +4489,8 @@ fieldset:disabled .btn {
   font-size: 1.25rem;
   text-decoration: none;
   white-space: nowrap;
+  opacity: 0;
+  transition: 200ms;
 }
 .navbar-nav {
   display: flex;
@@ -4909,10 +4911,14 @@ fieldset:disabled .btn {
 }
 
 .navbar-dark .navbar-brand {
+  display: visible;
+  transition: 200ms;
   color: #fff;
 }
 .navbar-dark .navbar-brand:hover,
 .navbar-dark .navbar-brand:focus {
+  display: visible;
+  transition: 200ms;
   color: #fff;
 }
 .navbar-dark .navbar-nav .nav-link {
@@ -11929,6 +11935,8 @@ body {
   #mainNav .navbar-brand {
     padding: 0.5rem 0;
     color: rgba(255, 255, 255, 0.5);
+    display: visible;
+    transition: 200ms;
   }
   #mainNav .nav-link {
     transition: none;
@@ -11945,6 +11953,8 @@ body {
     background-color: #fff;
   }
   #mainNav.navbar-shrink .navbar-brand {
+    opacity: 1;
+    transition: 200ms;
     color: #000;
   }
   #mainNav.navbar-shrink .nav-link {
@@ -12060,7 +12070,7 @@ body {
 @media (min-width: 992px) {
   .projects-section .featured-text {
     padding: 0 0 0 2rem;
-    border-left: 0.5rem solid #64a19d;
+    /* border-left: 0.5rem solid #64a19d; */
   }
 }
 .projects-section .project-text {
@@ -12074,7 +12084,7 @@ body {
   .projects-section .project-text hr {
     border-color: #64a19d;
     border-width: 0.25rem;
-    width: 30%;
+    width: 00%;
   }
 }
 
@@ -12152,18 +12162,32 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 4%;
+  gap: 1%;
 }
 .techIcon {
-  height: 80px;
-  width: 22%;
+  height: 60px;
+  width: 15.83%;
   margin-bottom: 2%;
   font-size: 0.8em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
 .techIcon > img {
-  width: 60%;
+  width: 70%;
+}
+.grayscale,
+.permagray {
+  filter: grayscale(1);
+  transition: 200ms;
+}
+.grayscale:hover {
+  filter: grayscale(0);
+  transform: scale(1.05);
+  transition: 200ms;
+  cursor: pointer;
+}
+.grayscale:active {
+  transform: scale(0.95);
+  transition: 200ms;
 }

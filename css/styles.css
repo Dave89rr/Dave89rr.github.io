@@ -83,6 +83,22 @@
   box-sizing: border-box;
 }
 
+.grayscale,
+.permagray {
+  filter: grayscale(0);
+  transition: 200ms;
+}
+.grayscale:hover {
+  filter: grayscale(0);
+  transform: scale(1.05);
+  transition: 200ms;
+  cursor: pointer;
+}
+.grayscale:active {
+  transform: scale(0.95);
+  transition: 200ms;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
@@ -5648,6 +5664,9 @@ fieldset:disabled .btn {
     margin-left: -1px;
     border-left-width: 1px;
   }
+  .grayscale {
+    filter: grayscale(0);
+  }
 }
 @media (min-width: 768px) {
   .list-group-horizontal-md {
@@ -5719,6 +5738,9 @@ fieldset:disabled .btn {
   .list-group-horizontal-xl > .list-group-item + .list-group-item.active {
     margin-left: -1px;
     border-left-width: 1px;
+  }
+  .grayscale {
+    filter: grayscale(1);
   }
 }
 @media (min-width: 1400px) {
@@ -12175,19 +12197,4 @@ body {
 }
 .techIcon > img {
   width: 70%;
-}
-.grayscale,
-.permagray {
-  filter: grayscale(1);
-  transition: 200ms;
-}
-.grayscale:hover {
-  filter: grayscale(0);
-  transform: scale(1.05);
-  transition: 200ms;
-  cursor: pointer;
-}
-.grayscale:active {
-  transform: scale(0.95);
-  transition: 200ms;
 }

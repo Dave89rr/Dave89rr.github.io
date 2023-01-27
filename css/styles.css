@@ -88,6 +88,9 @@
   filter: grayscale(0);
   transition: 200ms;
 }
+.permagray {
+  filter: grayscale(100) !important;
+}
 .grayscale:hover {
   filter: grayscale(0);
   transform: scale(1.05);
@@ -2895,7 +2898,9 @@ textarea.form-control-lg {
   border-bottom-right-radius: 0;
 }
 .input-group
-  > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(
+    .valid-feedback
+  ):not(.invalid-tooltip):not(.invalid-feedback) {
   margin-left: -1px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;

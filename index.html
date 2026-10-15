@@ -73,31 +73,85 @@
           </div>
         </div>
         <figure class="calc-fig">
-          <div
-            class="calc"
-            role="img"
-            aria-label='A TI-83 calculator screen running a short program: PROGRAM:DAVID, ClrHome, Disp "HELLO, WORLD", Disp "SINCE AGE 12", Input "HIRE? ", Str1'
-          >
+          <div class="calc">
             <div class="calc-top">
               <span>TI-83</span><span>TEXAS INSTRUMENTS</span>
             </div>
-            <div class="lcd" aria-hidden="true">
-              <div>PROGRAM:DAVID</div>
-              <div>:ClrHome</div>
-              <div>:Disp "HELLO, WORLD"</div>
-              <div>:Disp "SINCE AGE 12"</div>
-              <div>:Input "HIRE? ",Str1<span class="cur"></span></div>
+            <div class="lcd">
+              <div
+                class="lcd-screen"
+                role="img"
+                aria-label='A TI-83 calculator screen running a short program: PROGRAM:DAVID, ClrHome, Disp "HELLO, WORLD", Disp "SINCE AGE 12", Input "HIRE? ", Str1'
+              >
+                <div>PROGRAM:DAVID</div>
+                <div>:ClrHome</div>
+                <div>:Disp "HELLO, WORLD"</div>
+                <div>:Disp "SINCE AGE 12"</div>
+                <div>:Input "HIRE? ",Str1<span class="cur"></span></div>
+              </div>
+              <input
+                class="lcd-in"
+                type="text"
+                maxlength="16"
+                tabindex="-1"
+                autocomplete="off"
+                autocapitalize="characters"
+                spellcheck="false"
+                aria-label="Calculator input"
+              />
             </div>
-            <div class="keys" aria-hidden="true">
-              <span>Y=</span><span>WINDOW</span><span class="hot">PRGM</span
-              ><span>VARS</span><span>CLEAR</span>
+            <div class="keys">
+              <span aria-hidden="true">Y=</span
+              ><span aria-hidden="true">WINDOW</span
+              ><button type="button" class="hot" data-key="prgm">PRGM</button
+              ><span aria-hidden="true">VARS</span
+              ><button type="button" data-key="clear">CLEAR</button>
             </div>
+            <p class="sr-only" aria-live="polite"></p>
           </div>
           <figcaption class="calc-cap">
             Where it started: the PRGM key.
           </figcaption>
         </figure>
       </header>
+
+      <section class="sec stack" id="stack" aria-labelledby="stack-h">
+        <div class="sec-head"><h2 id="stack-h">Stack</h2></div>
+        <div class="skills">
+          <div>
+            <h3>Languages</h3>
+            <ul>
+              <li>JavaScript · TypeScript</li>
+              <li>Python</li>
+              <li>SQL · HTML · CSS</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Frameworks</h3>
+            <ul>
+              <li>React · Redux · Next.js</li>
+              <li>Node · Express</li>
+              <li>Flask · SQLAlchemy · Sequelize</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Integrations &amp; AI</h3>
+            <ul>
+              <li>REST · OAuth 2.0</li>
+              <li>LLM APIs · RAG</li>
+              <li>CLI tooling · automation</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Shipping</h3>
+            <ul>
+              <li>PostgreSQL · Docker · AWS</li>
+              <li>Git · Linux · Postman</li>
+              <li>TDD · Agile</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
       <section class="sec" id="work" aria-labelledby="work-h">
         <div class="sec-head">
@@ -170,21 +224,21 @@
             aria-label="Results from the iRepairIT automation suite"
           >
             <li>
-              <b>64% &rarr; 98%</b
+              <b>64% &rarr; <span data-from="64">98</span>%</b
               ><span
                 >Training compliance after the automated notification
                 pipeline</span
               >
             </li>
             <li>
-              <b>3&times;</b
+              <b><span data-from="1">3</span>&times;</b
               ><span
                 >Workforce growth supported, with turnover down from 20% to
                 8.3%</span
               >
             </li>
             <li>
-              <b>~94%</b><span>Less time on monthly financial processing</span>
+              <b>~<span data-from="0">94</span>%</b><span>Less time on monthly financial processing</span>
             </li>
           </ul>
           <div>
@@ -520,41 +574,6 @@
             </dl>
           </div>
         </div>
-
-        <div class="skills">
-          <div>
-            <h3>Languages</h3>
-            <ul>
-              <li>JavaScript · TypeScript</li>
-              <li>Python</li>
-              <li>SQL · HTML · CSS</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Frameworks</h3>
-            <ul>
-              <li>React · Redux · Next.js</li>
-              <li>Node · Express</li>
-              <li>Flask · SQLAlchemy · Sequelize</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Integrations &amp; AI</h3>
-            <ul>
-              <li>REST · OAuth 2.0</li>
-              <li>LLM APIs · RAG</li>
-              <li>CLI tooling · automation</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Shipping</h3>
-            <ul>
-              <li>PostgreSQL · Docker · AWS</li>
-              <li>Git · Linux · Postman</li>
-              <li>TDD · Agile</li>
-            </ul>
-          </div>
-        </div>
       </section>
 
       <section class="sec" id="contact" aria-labelledby="contact-h">
@@ -603,6 +622,181 @@
 
     <script>
       document.getElementById('yr').textContent = new Date().getFullYear();
+
+      const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const wait = (ms) => new Promise((r) => setTimeout(r, calm ? 0 : ms));
+
+      // TI-83 easter egg: PRGM opens the program menu, the program asks HIRE?
+      (() => {
+        const lcd = document.querySelector('.lcd');
+        const screen = lcd.querySelector('.lcd-screen');
+        const input = lcd.querySelector('.lcd-in');
+        const say = document.querySelector('.calc .sr-only');
+        const source = screen.innerHTML;
+        const sourceLabel = screen.getAttribute('aria-label');
+        const program = ['HELLO, WORLD', 'SINCE AGE 12'];
+        const esc = (t) => t.replace(/[&<>"]/g, (c) => '&#' + c.charCodeAt(0) + ';');
+        let state = 'source';
+        let busy = false;
+
+        const draw = (lines, label) => {
+          screen.innerHTML = lines.map((l) => '<div>' + l + '</div>').join('');
+          screen.setAttribute('aria-label', label || screen.innerText.trim());
+        };
+        const prompt = () => {
+          state = 'prompt';
+          draw([...program, 'HIRE? ' + esc(input.value) + '<span class="cur"></span>'],
+            'Calculator asks: HIRE? Type an answer and press Enter.');
+        };
+        const run = async () => {
+          if (busy) return;
+          busy = true;
+          input.value = '';
+          for (let i = 0; i <= program.length; i++) {
+            draw(program.slice(0, i));
+            await wait(260);
+          }
+          busy = false;
+          prompt();
+          say.textContent = 'HELLO, WORLD. SINCE AGE 12. HIRE?';
+        };
+        const done = (lines) => {
+          state = 'done';
+          draw([...program, 'HIRE? ' + esc(input.value), ...lines, '<span class="r">Done</span>']);
+          say.textContent = screen.getAttribute('aria-label');
+          input.value = '';
+        };
+        const answer = () => {
+          const a = input.value.trim();
+          if (!a) return;
+          if (/^(Y|YES|YEAH|YEP|SURE|OK|OKAY|ABSOLUTELY|OF COURSE)\b/.test(a)) {
+            done(['GREAT CHOICE.', '<a href="mailto:contact@davidrivera.me">contact@davidrivera.me</a>']);
+          } else if (/^(N|NO|NOPE|NAH|NEVER)\b/.test(a)) {
+            state = 'error';
+            input.value = '';
+            draw(['ERR:WRONG ANSWER', '<span class="inv">1</span>:Quit', '2:Goto']);
+            say.textContent = 'Error: wrong answer. Press 1 to quit or 2 to go back.';
+          } else {
+            done(["I'LL TAKE THAT", 'AS A MAYBE.']);
+          }
+        };
+        const menu = () => {
+          state = 'menu';
+          input.value = '';
+          draw(['<span class="inv">EXEC</span> EDIT NEW', '<span class="inv">1</span>:DAVID'],
+            'Program menu. Press Enter or 1 to run DAVID.');
+          say.textContent = screen.getAttribute('aria-label');
+        };
+        const clear = () => {
+          state = 'clear';
+          input.value = '';
+          draw(['<span class="cur"></span>'], 'Blank screen. Press Enter to run the program.');
+        };
+        const key = (k) => {
+          if (busy) return;
+          if (state === 'prompt') {
+            if (k === 'Enter') answer();
+          } else if (state === 'error') {
+            if (k === '1') {
+              state = 'source';
+              screen.innerHTML = source;
+              screen.setAttribute('aria-label', sourceLabel);
+            } else if (k === '2') prompt();
+          } else if (k === 'Enter' || (state === 'menu' && k === '1')) run();
+        };
+
+        lcd.addEventListener('click', (e) => {
+          if (e.target.closest('a')) return;
+          input.focus({ preventScroll: true });
+          if (state === 'error') {
+            const row = e.target.closest('.lcd-screen > div');
+            const i = row ? [...screen.children].indexOf(row) : -1;
+            if (i === 1 || i === 2) key(String(i));
+          } else if (state !== 'prompt') key('Enter');
+        });
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || (state !== 'prompt' && e.key.length === 1)) {
+            e.preventDefault();
+            key(e.key);
+          }
+        });
+        input.addEventListener('input', () => {
+          if (state !== 'prompt') {
+            // Some mobile keyboards skip keydown, so read the key from the value
+            const k = input.value.slice(-1);
+            input.value = '';
+            return k && key(k);
+          }
+          input.value = input.value.toUpperCase().replace(/[^A-Z0-9 ?!.,'-]/g, '');
+          prompt();
+        });
+        document.querySelector('.calc .keys').addEventListener('click', (e) => {
+          const b = e.target.closest('button');
+          if (!b) return;
+          b.dataset.key === 'prgm' ? menu() : clear();
+          input.focus({ preventScroll: true });
+        });
+      })();
+
+      // Selected work: type out the terminal, count up the stats, fade cards in
+      if (!calm && 'IntersectionObserver' in window) {
+        const term = document.querySelector('.term');
+        const rows = [...term.children];
+        term.classList.add('armed');
+        const typeTerm = async () => {
+          const cur = document.createElement('span');
+          cur.className = 'tcur';
+          for (const row of rows) {
+            row.classList.add('on');
+            const cmd = row.querySelector('.p') && row.querySelector('.p').textContent === '$' && row.lastChild;
+            if (cmd && cmd.nodeType === 3) {
+              const text = cmd.textContent.trim();
+              cmd.textContent = ' ';
+              row.append(cur);
+              for (const ch of text) {
+                cmd.textContent += ch;
+                await wait(32);
+              }
+              await wait(350);
+            } else {
+              await wait(row.querySelector('.d') ? 420 : 200);
+            }
+          }
+          rows[rows.length - 1].append(cur);
+        };
+
+        const counters = document.querySelectorAll('.stats [data-from]');
+        counters.forEach((c) => {
+          c.dataset.to = c.textContent;
+          c.textContent = c.dataset.from;
+        });
+        const countUp = () =>
+          counters.forEach((c) => {
+            const from = +c.dataset.from, to = +c.dataset.to, t0 = performance.now();
+            const step = (t) => {
+              const p = Math.min((t - t0) / 1400, 1);
+              c.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3)));
+              if (p < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+          });
+
+        const once = (el, fn, opts) =>
+          new IntersectionObserver((entries, io) => {
+            if (entries.some((e) => e.isIntersecting)) {
+              io.disconnect();
+              fn();
+            }
+          }, opts).observe(el);
+        once(term, typeTerm, { threshold: 0.5 });
+        once(document.querySelector('.stats'), countUp, { threshold: 0.5 });
+
+        document.querySelectorAll('.feature, .mini > li').forEach((el, i) => {
+          el.classList.add('reveal');
+          if (el.matches('.mini > li')) el.style.transitionDelay = (i % 3) * 0.1 + 's';
+          once(el, () => el.classList.add('in'), { rootMargin: '0px 0px -10% 0px' });
+        });
+      }
     </script>
   </body>
 </html>

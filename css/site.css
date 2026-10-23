@@ -48,20 +48,21 @@ p{margin:0}
 .train circle{fill:var(--sign);stroke:var(--sign-ink);stroke-width:5}
 .train .core{stroke:none;fill:var(--gold)}
 
-.map-foot{display:grid;grid-template-columns:1fr auto;gap:20px 28px;align-items:end}
-.legend{display:grid;grid-template-columns:repeat(2,auto);gap:6px 22px;justify-content:start;font-size:16px;list-style:none;margin:0;padding:0}
+.map-foot{display:grid;grid-template-columns:1fr auto;gap:6px 28px;align-items:end}
+.legend{grid-row:1/3;display:grid;grid-template-columns:repeat(2,auto);gap:6px 22px;justify-content:start;font-size:16px;list-style:none;margin:0;padding:0}
 .legend li{display:flex;align-items:center;gap:10px}
 .legend i{width:26px;height:8px;border-radius:4px;display:block}
-.key{display:grid;gap:6px}
-.key label{font-size:16px;color:var(--sign-soft)}
-.key-row{display:flex;background:#2A2D30;border-radius:6px}
+/* the form's parts sit in the foot's grid so the message can't widen the input */
+.key{display:contents}
+.key label{grid-column:2;grid-row:1;font-size:16px;color:var(--sign-soft)}
+.key-row{grid-column:2;grid-row:2;display:flex;background:#2A2D30;border-radius:6px}
 .key input{width:88px;background:transparent;border:0;color:var(--sign-ink);font:800 26px var(--sans);text-transform:uppercase;padding:10px 14px;letter-spacing:.02em}
 .key input::placeholder{color:#7D8185}
 .key input:focus{outline:none}
 .key-row:focus-within{box-shadow:inset 0 0 0 3px var(--gold)} /* taste-skill-ignore: focus ring, not a resting shadow */
 .key button{border:0;background:var(--gold);color:#141516;font:800 16px var(--sans);padding:0 18px;border-radius:0 6px 6px 0;cursor:pointer;transition:transform 160ms var(--ease-out)}
 .key button:active{transform:scale(.97)}
-.key-msg{font-size:16px;color:var(--sign-soft);min-height:1.4em}
+.key-msg{grid-column:1/-1;grid-row:3;text-align:right;font-size:16px;color:var(--sign-soft);min-height:1.55em}
 .key-msg.err{color:var(--red-t)}
 
 /* right: the platforms, scrolling */

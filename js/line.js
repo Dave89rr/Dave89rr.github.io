@@ -52,9 +52,20 @@
   // which stop is at the platform: the one crossing the upper third of the viewport
   const targets = [...document.querySelectorAll('[data-stop]')].filter(el => !(el.id==='earlier'));
   const io = new IntersectionObserver(es => {
+    if (held) return;
     for (const e of es) if (e.isIntersecting) arrive(e.target.dataset.stop);
   }, {rootMargin:'-30% 0px -65% 0px'});
   targets.forEach(t=>io.observe(t));
+
+  // a jump names its stop, so the band mustn't overrule it: the earlier-builds rows are
+  // short enough that the next row, not the chosen one, crosses the band once you land
+  let held = false, release;
+  const letGo = ms => { clearTimeout(release); release = setTimeout(() => { held = false; }, ms); };
+  addEventListener('scroll', () => { if (held) letGo(150); }, {passive:true});
+  function jump(id){ arrive(id); held = true; letGo(400); }
+  g.addEventListener('click', ev => { const a = ev.target.closest('a'); if (a) jump(a.getAttribute('href').slice(1)); });
+  const fromHash = STOPS.find(x=>'#'+x.id===location.hash);
+  if (fromHash) jump(fromHash.id);
 
   // entrances: once per station, parts staggered by --i
   const io2 = new IntersectionObserver((es,o) => { for (const e of es) if (e.isIntersecting){ e.target.classList.add('in'); o.unobserve(e.target);} }, {rootMargin:'0px 0px -12% 0px'});
@@ -68,11 +79,13 @@
     const s = STOPS.find(x=>x.code===code);
     if (!s) { msg.className='key-msg err'; msg.textContent = code ? `No stop ${code}. Try I1–I4, A1–A2, E1–E4, C1–C3.` : 'Type a stop code, like I2.'; return; }
     msg.className='key-msg'; msg.textContent = `Now arriving: ${s.name}`;
+    jump(s.id);
     document.getElementById(s.id).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
     history.replaceState(null,'','#'+s.id); inp.value='';
   });
   document.getElementById('s-next').addEventListener('click', () => {
     const i = STOPS.findIndex(x=>x.id===current); const n = STOPS[Math.min(i+1, STOPS.length-1)];
+    jump(n.id);
     document.getElementById(n.id).scrollIntoView({behavior:'smooth'});
   });
 })();

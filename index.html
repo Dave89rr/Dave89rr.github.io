@@ -3,20 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>David Rivera - Full-stack developer in Atlanta, GA</title>
+    <title>David Rivera - Front-end-led full-stack developer in Atlanta, GA</title>
     <meta
       name="description"
-      content="David Rivera is a full-stack developer in Atlanta, GA. I build software that replaces hours of manual work with reliable automation: web apps, API integrations, and command-line tools."
+      content="David Rivera is a front-end-led full-stack developer in Atlanta, GA. Live work includes GamersAtlas, a D&amp;D combat tracker, and sites for small businesses."
     />
     <meta name="author" content="David Rivera" />
     <link rel="canonical" href="https://davidrivera.me/" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://davidrivera.me/" />
-    <meta property="og:title" content="David Rivera — Full-stack developer" />
+    <meta property="og:title" content="David Rivera — Front-end-led full-stack developer" />
     <meta
       property="og:description"
-      content="I build software that replaces hours of manual work with reliable automation: web apps, API integrations, and command-line tools. React, Flask, Node, and Postgres. Based in Atlanta, GA."
+      content="Front-end-led full-stack developer in Atlanta. I build interfaces people use every day."
     />
     <meta
       property="og:image"
@@ -29,682 +29,266 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=VT323&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,400;0,600;0,800;0,900;1,400&family=VT323&display=swap"
     />
     <link rel="stylesheet" href="css/site.css" />
+    <script>document.documentElement.classList.add('js');</script>
   </head>
-  <body id="top">
-    <a class="skip" href="#work">Skip to work</a>
-    <div class="wrap">
-      <nav class="nav" aria-label="Main">
-        <a class="brand" href="#top">David Rivera</a>
-        <div class="nav-links">
-          <a href="#work">Work</a>
-          <a href="#experience">Experience</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-          <a class="cv" href="assets/david-rivera-resume.pdf">Résumé&nbsp;↓</a>
-        </div>
-      </nav>
+  <body>
+    <a class="sr skip" href="#i1">Skip to the work</a>
 
-      <header class="hero">
-        <div>
-          <span class="eyebrow">Atlanta, GA · Full-stack developer</span>
-          <h1>
-            I build software that replaces hours of manual work with
-            <em>reliable automation</em>.
-          </h1>
-          <p class="lede">
-            Web apps, API integrations, and the command-line tools that turn a
-            Friday afternoon of spreadsheets into one command. React and Flask
-            on the front and back, Postgres underneath.
-          </p>
-          <div class="ctas">
-            <a class="btn primary" href="mailto:contact@davidrivera.me"
-              >Email me</a
-            >
-            <a
-              class="btn ghost"
-              href="https://calendly.com/dlriverarocha"
-              target="_blank"
-              rel="noopener"
-              >Book a 20-min call</a
-            >
-          </div>
+    <div class="strip" aria-hidden="true">
+      <span class="bullet b-i" id="s-code">I1</span><b id="s-name">GamersAtlas</b>
+      <button type="button" id="s-next" tabindex="-1">Next stop ↓</button>
+    </div>
+
+    <div class="stage">
+      <!-- ROUTE MAP -->
+      <aside class="map" aria-label="Route map">
+        <div class="map-top"><h2>Route map</h2><p>Atlanta · 2017 to now</p></div>
+        <svg viewBox="0 0 520 840" preserveAspectRatio="xMinYMid meet" role="img" aria-labelledby="map-t">
+          <title id="map-t">Four lines: Interfaces I1 to I4, Automation A1 to A2, Earlier builds E1 to E4, Career C1 to C3</title>
+          <path class="ln" stroke="var(--gold)" d="M80 30 V255" />
+          <path class="ln" stroke="var(--blue)" d="M80 255 L120 295 V390" />
+          <path class="ln" stroke="var(--green)" d="M120 390 L160 430 V620" />
+          <path class="ln" stroke="var(--red)" d="M160 620 L200 660 V810" />
+          <g id="stops"></g>
+          <g class="train" id="train"><circle r="17" /><circle class="core" r="8" /></g>
+        </svg>
+        <div class="map-foot">
+          <ul class="legend">
+            <li><i style="background: var(--gold)"></i>Interfaces</li>
+            <li><i style="background: var(--blue)"></i>Automation</li>
+            <li><i style="background: var(--green)"></i>Earlier builds</li>
+            <li><i style="background: var(--red)"></i>Career</li>
+          </ul>
+          <form class="key" id="key">
+            <label for="key-in">Go to stop</label>
+            <div class="key-row"><input id="key-in" maxlength="3" placeholder="I2" autocomplete="off" spellcheck="false" /><button type="submit">Go</button></div>
+            <p class="key-msg" id="key-msg" aria-live="polite"></p>
+          </form>
         </div>
-        <figure class="calc-fig">
-          <div class="calc">
-            <div class="calc-top">
-              <span>TI-83</span><span>TEXAS INSTRUMENTS</span>
-            </div>
-            <div class="lcd">
-              <div
-                class="lcd-screen"
-                role="img"
-                aria-label='A TI-83 calculator screen running a short program: PROGRAM:DAVID, ClrHome, Disp "HELLO, WORLD", Disp "SINCE AGE 12", Input "HIRE? ", Str1'
-              >
-                <div>PROGRAM:DAVID</div>
-                <div>:ClrHome</div>
-                <div>:Disp "HELLO, WORLD"</div>
-                <div>:Disp "SINCE AGE 12"</div>
-                <div>:Input "HIRE? ",Str1<span class="cur"></span></div>
+      </aside>
+
+      <!-- THE RIDE -->
+      <main class="ride">
+        <nav class="nav" aria-label="Main">
+          <a href="#i1">Work</a><a href="#c1">Experience</a><a href="#c2">About</a><a href="#c3">Contact</a><a href="assets/david-rivera-resume.pdf">Résumé ↓</a>
+        </nav>
+
+        <header class="hero" id="start" data-stop="start">
+          <figure class="calc-fig">
+            <div class="calc">
+              <div class="calc-top">
+                <span>TI-83</span><span>TEXAS INSTRUMENTS</span>
               </div>
-              <input
-                class="lcd-in"
-                type="text"
-                tabindex="-1"
-                autocomplete="off"
-                autocapitalize="characters"
-                spellcheck="false"
-                aria-label="Calculator input"
-              />
-              <div class="lcd-edit" hidden>
-                <div class="lcd-edit-head"></div>
-                <textarea
-                  rows="5"
+              <div class="lcd">
+                <div
+                  class="lcd-screen"
+                  role="img"
+                  aria-label='A TI-83 calculator screen running a short program: PROGRAM:DAVID, ClrHome, Disp "HELLO, WORLD", Disp "SINCE AGE 12", Input "HIRE? ", Str1'
+                >
+                  <div>PROGRAM:DAVID</div>
+                  <div>:ClrHome</div>
+                  <div>:Disp "HELLO, WORLD"</div>
+                  <div>:Disp "SINCE AGE 12"</div>
+                  <div>:Input "HIRE? ",Str1<span class="cur"></span></div>
+                </div>
+                <input
+                  class="lcd-in"
+                  type="text"
+                  tabindex="-1"
                   autocomplete="off"
-                  autocapitalize="off"
+                  autocapitalize="characters"
                   spellcheck="false"
-                  aria-label="Program editor"
-                ></textarea>
-              </div>
-            </div>
-            <div class="keys">
-              <span aria-hidden="true">Y=</span
-              ><span aria-hidden="true">WINDOW</span
-              ><button type="button" class="hot" data-key="prgm">PRGM</button
-              ><span aria-hidden="true">VARS</span
-              ><button type="button" data-key="clear">CLEAR</button>
-            </div>
-            <p class="sr-only" aria-live="polite"></p>
-          </div>
-          <figcaption class="calc-cap">
-            Where it started: the PRGM key.
-          </figcaption>
-        </figure>
-      </header>
-
-      <section class="sec stack" id="stack" aria-labelledby="stack-h">
-        <div class="sec-head"><h2 id="stack-h">Stack</h2></div>
-        <div class="skills">
-          <div>
-            <h3>Languages</h3>
-            <ul>
-              <li>JavaScript · TypeScript</li>
-              <li>Python</li>
-              <li>SQL · HTML · CSS</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Frameworks</h3>
-            <ul>
-              <li>React · Redux · Next.js</li>
-              <li>Node · Express</li>
-              <li>Flask · SQLAlchemy · Sequelize</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Integrations &amp; AI</h3>
-            <ul>
-              <li>REST · OAuth 2.0</li>
-              <li>LLM APIs · RAG</li>
-              <li>CLI tooling · automation</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Shipping</h3>
-            <ul>
-              <li>PostgreSQL · Docker · AWS</li>
-              <li>Git · Linux · Postman</li>
-              <li>TDD · Agile</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="sec" id="work" aria-labelledby="work-h">
-        <div class="sec-head">
-          <h2 id="work-h">Selected work</h2>
-        </div>
-
-        <article class="feature">
-          <div
-            class="term"
-            role="img"
-            aria-label="Two example commands from the operations toolkit. First: commission dry-run for August 2026 pulls sales from the point-of-sale API, matches shifts from the scheduling API, applies commission and tip rules, and reports that nothing was written. Second: worklog summary for the week merges sessions, breaks and meetings into a timesheet cross-check."
-          >
-            <div>
-              <span class="p">$</span> commission dry-run --month 2026-08
-            </div>
-            <div>
-              <span class="d">&nbsp;&nbsp;pulling sales from the POS API…</span>
-            </div>
-            <div>
-              <span class="d"
-                >&nbsp;&nbsp;matching shifts from the scheduling API…</span
-              >
-            </div>
-            <div>
-              <span class="d"
-                >&nbsp;&nbsp;applying commission + tip rules…</span
-              >
-            </div>
-            <div><span class="p">✓</span> report ready</div>
-            <div class="gap">
-              <span class="p">$</span> worklog summary --week
-            </div>
-            <div>
-              <span class="d"
-                >&nbsp;&nbsp;merging sessions, breaks, meetings…</span
-              >
-            </div>
-            <div><span class="p">✓</span> timesheet cross-check ready</div>
-          </div>
-          <div>
-            <div class="f-meta">
-              <span class="status current">Current</span>
-              <span class="eyebrow">2026 – present</span>
-            </div>
-            <h3>Operations toolkit</h3>
-            <p class="what">
-              I built a suite of command-line tools to automate the messy
-              back-office math for a property management business and a retail
-              shop. Instead of manually juggling exports, the scripts sync
-              accounting, scheduling, and point-of-sale APIs, audit timesheets
-              against real hours, and run the entire monthly payroll and
-              commission breakdown from a single command.
-            </p>
-            <p class="role">
-              <b>My role:</b> sole developer. Private repositories. Happy to
-              walk through the design in an interview.
-            </p>
-            <ul class="tags">
-              <li>Python</li>
-              <li>REST APIs</li>
-              <li>OAuth 2.0</li>
-              <li>CLI</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="feature">
-          <ul
-            class="stats"
-            aria-label="Results from the iRepairIT automation suite"
-          >
-            <li>
-              <b>64% &rarr; <span data-from="64">98</span>%</b
-              ><span
-                >Training compliance after the automated notification
-                pipeline</span
-              >
-            </li>
-            <li>
-              <b><span data-from="1">3</span>&times;</b
-              ><span
-                >Workforce growth supported, with turnover down from 20% to
-                8.3%</span
-              >
-            </li>
-            <li>
-              <b>~<span data-from="0">94</span>%</b
-              ><span>Less time on monthly financial processing</span>
-            </li>
-          </ul>
-          <div>
-            <div class="f-meta">
-              <span class="status off">Internal tooling</span>
-              <span class="eyebrow">2018 – 2022</span>
-            </div>
-            <h3>iRepairIT automation suite</h3>
-            <p class="what">
-              I built a set of internal tools to keep a multi-location repair
-              business running smoothly behind the scenes. It combined a Discord
-              bot wired to Twilio for customer text alerts, an instant
-              repair-cost calculator to eliminate quoting discrepancies, and a
-              Trello webhook pipeline that chased down training compliance
-              without manager intervention.
-            </p>
-            <p class="role">
-              <b>My role:</b> built it solo, inside an operations job, because
-              the business needed it. Private to the company.
-            </p>
-            <ul class="tags">
-              <li>JavaScript</li>
-              <li>discord.js</li>
-              <li>Twilio API</li>
-              <li>Trello webhooks</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="feature">
-          <div class="shot">
-            <img
-              src="assets/img/ggcmaps-demo.gif"
-              width="600"
-              height="338"
-              loading="lazy"
-              decoding="async"
-              alt="GGCMaps: searching a room number, then panning and zooming a detailed floor plan of the building"
-            />
-          </div>
-          <div>
-            <div class="f-meta">
-              <span class="status live">Live</span>
-              <span class="eyebrow">2017 – 2018 · student project</span>
-            </div>
-            <h3>GGCMaps</h3>
-            <p class="what">
-              Campus room finding made simple. Students type in any room number
-              to get an instant, pan-and-zoom vector floor plan showing them
-              exactly where to go. It saves new students from feeling lost in a
-              maze the first time they walk into the A building.
-            </p>
-            <p class="role">
-              <b>My role:</b> Team Lead. Inherited an early proof of concept and
-              led the four-person engineering team that built the production
-              platform, contributing 350+ commits across the UI, rendering, and
-              routing. Later served as the project client/mentor for incoming
-              student cohorts to practice technical scoping. Open-source, forked
-              24+ times.
-            </p>
-            <ul class="tags">
-              <li>JavaScript</li>
-              <li>Sass · Compass</li>
-              <li>Grunt</li>
-              <li>SVG pan/zoom</li>
-              <li>PWA</li>
-            </ul>
-            <div class="f-links">
-              <a href="http://ggcmaps.com" target="_blank" rel="noopener"
-                >Visit site</a
-              >
-              <a
-                href="https://github.com/avestech/ggcmaps.github.io"
-                target="_blank"
-                rel="noopener"
-                >Code</a
-              >
-            </div>
-          </div>
-        </article>
-
-        <div class="earlier">
-          <h3>Quick sprint demos · 2022</h3>
-          <p>
-            Full-stack projects I built to learn the stack, each one taken from
-            an empty repository to a deployed app in about two weeks.
-          </p>
-          <ul class="mini">
-            <li>
-              <div class="shot">
-                <img
-                  src="assets/img/stakr-demo.gif"
-                  width="600"
-                  height="338"
-                  loading="lazy"
-                  decoding="async"
-                  alt="Stakr: dragging a card from one list to another on a project board"
+                  aria-label="Calculator input"
                 />
+                <div class="lcd-edit" hidden>
+                  <div class="lcd-edit-head"></div>
+                  <textarea
+                    rows="5"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    aria-label="Program editor"
+                  ></textarea>
+                </div>
               </div>
-              <div class="f-meta" style="margin: 4px 0 0">
-                <span class="status live">Live</span>
+              <div class="keys">
+                <span aria-hidden="true">Y=</span
+                ><span aria-hidden="true">WINDOW</span
+                ><button type="button" class="hot" data-key="prgm">PRGM</button
+                ><span aria-hidden="true">VARS</span
+                ><button type="button" data-key="clear">CLEAR</button>
               </div>
-              <h4>Stakr</h4>
-              <p>
-                Trello-style boards with drag-and-drop between lists. Flask and
-                SQLAlchemy behind a React and Redux front end.
-              </p>
-              <div class="f-links">
-                <a
-                  href="https://stakr.davidrivera.me"
-                  target="_blank"
-                  rel="noopener"
-                  >Visit site</a
-                >
-                <a
-                  href="https://github.com/Dave89rr/Stakr"
-                  target="_blank"
-                  rel="noopener"
-                  >Code</a
-                >
-              </div>
-            </li>
-            <li>
-              <div class="shot">
-                <img
-                  src="assets/img/machenist-demo.gif"
-                  width="600"
-                  height="338"
-                  loading="lazy"
-                  decoding="async"
-                  alt="Machenist: adding, scheduling, and completing tasks in a project list"
-                />
-              </div>
-              <div class="f-meta" style="margin: 4px 0 0">
-                <span class="status live">Live</span>
-              </div>
-              <h4>Machenist</h4>
-              <p>
-                A task manager modeled closely on Todoist's interface, including
-                its date picker. Flask, SQLAlchemy, React, Redux.
-              </p>
-              <div class="f-links">
-                <a
-                  href="https://machenist.davidrivera.me"
-                  target="_blank"
-                  rel="noopener"
-                  >Visit site</a
-                >
-                <a
-                  href="https://github.com/Dave89rr/Todoist-Clone"
-                  target="_blank"
-                  rel="noopener"
-                  >Code</a
-                >
-              </div>
-            </li>
-            <li>
-              <div class="shot">
-                <img
-                  src="assets/img/rarepnt-demo.gif"
-                  width="480"
-                  height="270"
-                  loading="lazy"
-                  decoding="async"
-                  alt="RarePnT: browsing unusual travel destinations and opening a listing page"
-                />
-              </div>
-              <div class="f-meta" style="margin: 4px 0 0">
-                <span class="status live">Live</span>
-              </div>
-              <h4>RarePnT</h4>
-              <p>
-                Airbnb-style listings for uncommon places to visit. Express and
-                Sequelize on Postgres, React on the front.
-              </p>
-              <div class="f-links">
-                <a
-                  href="https://rarepnt.davidrivera.me"
-                  target="_blank"
-                  rel="noopener"
-                  >Visit site</a
-                >
-                <a
-                  href="https://github.com/Dave89rr/react-solo-project"
-                  target="_blank"
-                  rel="noopener"
-                  >Code</a
-                >
-              </div>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="sec" id="experience" aria-labelledby="exp-h">
-        <div class="sec-head">
-          <h2 id="exp-h">Experience</h2>
-          <p><a href="assets/david-rivera-resume.pdf">Full résumé (PDF)</a></p>
-        </div>
-        <ol class="exp">
-          <li>
-            <span class="when">Jan 2025 – present</span>
-            <div>
-              <h3>Operations &amp; Systems Manager</h3>
-              <p>
-                Own the digital infrastructure across several multi-entity
-                operations: scheduling platforms, financial tracking, and the
-                integrations that tie them together. Most of the operations
-                toolkit above was built here, turning manual workflows into
-                automated pipelines as the business expanded regionally.
-              </p>
-              <ul class="tags">
-                <li>Python</li>
-                <li>REST APIs</li>
-                <li>Systems integration</li>
-                <li>Cloud tooling</li>
-              </ul>
+              <p class="sr-only" aria-live="polite"></p>
             </div>
-          </li>
-          <li class="pause">
-            <span class="when">Sep 2023 – Jan 2025</span>
-            <div>
-              <h3>Family sabbatical</h3>
-              <p>
-                Stepped away from full-time engineering for full-time caregiving
-                during a major family transition, then returned to work.
-              </p>
-            </div>
-          </li>
-          <li>
-            <span class="when">May 2023 – Sep 2023</span>
-            <div>
-              <h3>
-                Senior Software Developer ·
-                <span class="org">Southern Siding and Gutters</span>
-              </h3>
-              <p>
-                Tracked down and fixed application-layer bottlenecks and
-                security holes across a full-stack system, and automated unit
-                testing so deployments stopped regressing. Scoped features
-                directly with product managers, UX, and stakeholders, and ran
-                user acceptance testing.
-              </p>
-            </div>
-          </li>
-          <li>
-            <span class="when">Mar 2022 – Aug 2022</span>
-            <div>
-              <h3>
-                Software Engineering Immersive ·
-                <span class="org">App Academy</span>
-              </h3>
-              <p>
-                950+ hours of full-stack training in web architecture,
-                object-oriented programming, and test-driven development. The
-                three earlier builds above came out of this.
-              </p>
-              <ul class="tags">
-                <li>React · Redux</li>
-                <li>Node · Express</li>
-                <li>Flask</li>
-                <li>PostgreSQL</li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <span class="when">Oct 2018 – Jan 2022</span>
-            <div>
-              <h3>
-                Continuous Improvement Lead · <span class="org">iRepairIT</span>
-              </h3>
-              <p>
-                Most of the work in this role was engineering. I built the
-                automation suite above (customer SMS notifications, a quoting
-                calculator, and a training-compliance pipeline) and the
-                onboarding frameworks that let the company scale its workforce
-                threefold.
-              </p>
-              <ul class="tags">
-                <li>JavaScript</li>
-                <li>discord.js</li>
-                <li>Twilio</li>
-                <li>Automation</li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <span class="when">Education</span>
-            <div>
-              <h3>
-                B.S. Information Technology, Software Development ·
-                <span class="org">Georgia Gwinnett College</span>
-              </h3>
-            </div>
-          </li>
-        </ol>
-      </section>
-
-      <section class="sec" id="about" aria-labelledby="about-h">
-        <div class="sec-head"><h2 id="about-h">About</h2></div>
-        <div class="about">
-          <figure>
-            <img
-              src="assets/img/pfp-port.png"
-              loading="lazy"
-              decoding="async"
-              alt="David at his desk wearing headphones, with his sleeping baby resting on his chest"
-            />
-            <figcaption>This counts as pair programming, right?</figcaption>
+            <figcaption class="calc-cap">Where it started: the PRGM key.</figcaption>
           </figure>
-          <div class="prose">
-            <p>
-              At twelve I pressed the PRGM key on a TI-83 to see what it did,
-              and I've been writing programs ever since. I studied software
-              development in college, but life took me elsewhere for a while.
-            </p>
-            <p>
-              Having worked in HR shaped how I build my code for fellow
-              employees. I've been the person stuck with bad software, so I
-              design for the people who have to use it every day.
-            </p>
-            <p>
-              Outside of work I'm a dad first and I'm happiest when I get to
-              spend time with my family.
-            </p>
-            <dl class="facts">
-              <dt>Based</dt>
-              <dd>Smyrna / Atlanta, GA · open to remote</dd>
-              <dt>Languages</dt>
-              <dd>English (native), Spanish (native), French (intermediate)</dd>
-              <dt>Looking for</dt>
-              <dd>Full-stack or API-integration roles</dd>
-            </dl>
+          <h1 class="rise">David Rivera</h1>
+          <p class="what rise" style="--i: 1">Front-end-led full-stack developer in Atlanta. I build interfaces people use every day.</p>
+          <div class="acts rise" style="--i: 2">
+            <a class="btn" href="mailto:contact@davidrivera.me">Email me</a>
+            <a class="txt" href="https://calendly.com/dlriverarocha" target="_blank" rel="noopener">Book a 20-min call</a>
           </div>
-        </div>
-      </section>
+          <a class="next rise" style="--i: 3" href="#i1"><span class="bullet b-i">I1</span>Next stop: GamersAtlas</a>
+        </header>
 
-      <section class="sec" id="contact" aria-labelledby="contact-h">
-        <div class="contact">
-          <div>
-            <span class="eyebrow">Contact</span>
-            <h2 id="contact-h">
-              Got a process that eats your week? Let's talk.
-            </h2>
-            <a class="mail" href="mailto:contact@davidrivera.me"
-              >contact@davidrivera.me</a
-            >
+        <!-- I1 -->
+        <section class="station" id="i1" data-stop="i1" style="--line: var(--gold)" aria-labelledby="i1-h">
+          <div class="sign rise"><span class="bullet b-i">I1</span><h2 id="i1-h">GamersAtlas</h2><a class="visit" href="https://gamersatlas.com" target="_blank" rel="noopener">Visit site ↗</a></div>
+          <p class="meta rise" style="--i: 1"><b>Live</b><span>2026</span><span>Personal project</span><span>Sole developer, design through deploy</span></p>
+          <a class="shot rise" style="--i: 2" href="https://gamersatlas.com" target="_blank" rel="noopener"><img src="assets/img/gamersatlas.jpg" width="960" height="540" loading="lazy" decoding="async" alt="GamersAtlas home page: 'Get Unstuck, Keep Playing' with a game search box" /></a>
+          <div class="body rise" style="--i: 3">
+            <div>
+              <p>Goodreads for video games. Players shelve what they're playing, write guides in Markdown with a live preview and spoiler gates, and search across guides to jump straight to the section that gets them unstuck.</p>
+              <p class="stack">React 19 · Vite · React Router · CSS</p>
+            </div>
+            <p class="hood"><b>Under the hood:</b> Express 5 API on SQLite with full-text ranking, a RAWG catalog fallback, an admin approval queue. Shipped with Docker and Caddy. Code coming soon.</p>
           </div>
-          <div class="elsewhere">
-            <a
-              class="btn primary"
-              href="https://calendly.com/dlriverarocha"
-              target="_blank"
-              rel="noopener"
-              >Book a 20-min call</a
-            >
-            <a href="https://github.com/Dave89rr" target="_blank" rel="noopener"
-              >GitHub</a
-            >
-            <a
-              href="https://www.linkedin.com/in/dlrr"
-              target="_blank"
-              rel="noopener"
-              >LinkedIn</a
-            >
-            <a
-              href="https://wellfound.com/u/dave89rr"
-              target="_blank"
-              rel="noopener"
-              >Wellfound</a
-            >
-            <a href="assets/david-rivera-resume.pdf">Résumé (PDF)</a>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <footer class="foot">
-        <span>© <span id="yr">2026</span> David Rivera</span>
-      </footer>
+        <!-- I2 -->
+        <section class="station" id="i2" data-stop="i2" style="--line: var(--gold)" aria-labelledby="i2-h">
+          <div class="sign rise"><span class="bullet b-i">I2</span><h2 id="i2-h">D&amp;D Combat Tracker</h2><span class="soon">Demo coming soon</span></div>
+          <p class="meta rise" style="--i: 1"><b>In use</b><span>2026</span><span>Personal project</span><span>Sole developer</span></p>
+          <div class="tracker rise" style="--i: 2"><img src="assets/img/tracker-icon.png" width="512" height="512" loading="lazy" decoding="async" alt="Combat Tracker app icon: a d20 crossed with a sword and a spear" /></div>
+          <div class="body rise" style="--i: 3">
+            <div>
+              <p>A live combat tracker my own D&amp;D table plays with. The DM runs initiative, hit points and conditions from one screen; players get a redacted view of the fight, and every roll and hit reaches every open screen as it happens.</p>
+              <p class="stack">Next.js 15 · React 19 · TypeScript</p>
+            </div>
+            <p class="hood"><b>Under the hood:</b> a rules engine kept apart from the database, nearly 2,000 automated tests, Postgres through Prisma with serializable transactions, an event log with undo, live updates over server-sent events, and D&amp;D Beyond character import.</p>
+          </div>
+        </section>
+
+        <!-- I3 -->
+        <section class="station" id="i3" data-stop="i3" style="--line: var(--gold)" aria-labelledby="i3-h">
+          <div class="sign rise"><span class="bullet b-i">I3</span><h2 id="i3-h">River Nest Properties</h2><a class="visit" href="https://rivernestproperties.com" target="_blank" rel="noopener">Visit site ↗</a></div>
+          <p class="meta rise" style="--i: 1"><b>Live</b><span>2026</span><span>Client site</span><span>Sole developer</span></p>
+          <a class="shot rise" style="--i: 2" href="https://rivernestproperties.com" target="_blank" rel="noopener"><img src="assets/img/rivernest.jpg" width="960" height="540" loading="lazy" decoding="async" alt="River Nest Properties home page: 'Find your next home with River Nest Properties'" /></a>
+          <div class="body rise" style="--i: 3">
+            <div>
+              <p>A rental listings site for a Smyrna property manager. Every page is pre-rendered to HTML so it loads fast and indexes well, and the listing cards fill from the live rental feed.</p>
+              <p class="stack">React 19 · TypeScript · Prerendering · CSS</p>
+            </div>
+            <p class="hood"><b>Under the hood:</b> a small PHP API with a cached Buildium listings feed and a static fallback, an image proxy that serves WebP, and a contact form that emails the office.</p>
+          </div>
+        </section>
+
+        <!-- I4 -->
+        <section class="station" id="i4" data-stop="i4" style="--line: var(--gold)" aria-labelledby="i4-h">
+          <div class="sign rise"><span class="bullet b-i">I4</span><h2 id="i4-h">Dispensed</h2><span class="soon">Opening soon</span></div>
+          <p class="meta rise" style="--i: 1"><b>Launching soon</b><span>2026</span><span>Client site</span><span>Sole developer</span></p>
+          <div class="dispensed rise" style="--i: 2"><img src="assets/img/dispensed-logo.png" width="600" height="120" loading="lazy" decoding="async" alt="Dispensed logo" /></div>
+          <div class="body rise" style="--i: 3">
+            <div>
+              <p>Pickup ordering and consultation booking for a Georgia medical cannabis provider: a multi-location store picker, a product shop, and page transitions that respect reduced-motion settings.</p>
+              <p class="stack">Next.js 16 · React 19 · Tailwind 4 · TypeScript</p>
+            </div>
+            <p class="hood"><b>Under the hood:</b> Postgres with Drizzle, a patient-eligibility gate, booking with a double-booking guard, and a staff admin with two-step login and an audit log.</p>
+          </div>
+        </section>
+
+        <!-- A1 -->
+        <section class="station" id="a1" data-stop="a1" style="--line: var(--blue)" aria-labelledby="a1-h">
+          <div class="sign rise"><span class="bullet b-a">A1</span><h2 id="a1-h">Operations toolkit</h2><span class="soon">Private repos</span></div>
+          <p class="meta rise" style="--i: 1"><b>Current</b><span>2025 to now</span><span>Sole developer</span><span>Python · REST · OAuth 2.0</span></p>
+<pre class="term rise" style="--i: 2" aria-label="Example run of the commission dry-run command"><span class="p">$</span> commission dry-run --month 2026-08
+<span class="d">  pulling sales from the POS API…
+  matching shifts from the scheduling API…
+  applying commission + tip rules…</span>
+<span class="ok">done:</span> report ready · nothing written
+
+<span class="p">$</span> worklog summary --week
+<span class="d">  merging sessions, breaks, meetings…</span>
+<span class="ok">done:</span> timesheet cross-check ready</pre>
+          <div class="body rise" style="--i: 3">
+            <p>Command-line tools for a property manager and a retail shop: they sync accounting, scheduling and point-of-sale APIs, audit timesheets against real hours, and run the monthly payroll and commission breakdown from a single command.</p>
+            <p class="hood">Happy to walk through the design in an interview.</p>
+          </div>
+        </section>
+
+        <!-- A2 -->
+        <section class="station" id="a2" data-stop="a2" style="--line: var(--blue)" aria-labelledby="a2-h">
+          <div class="sign rise"><span class="bullet b-a">A2</span><h2 id="a2-h">iRepairIT automation</h2><span class="soon">Internal</span></div>
+          <p class="meta rise" style="--i: 1"><b>2018 to 2022</b><span>Built inside an operations job</span><span>JavaScript · discord.js · Twilio</span></p>
+          <table class="ba rise" style="--i: 2">
+            <caption class="sr">Results at iRepairIT</caption>
+            <thead><tr><th scope="col">Measure</th><th scope="col">Result</th></tr></thead>
+            <tbody>
+              <tr><td>Training compliance</td><td class="n">64% → 98%</td></tr>
+              <tr><td>Staff turnover, while the team grew 3×</td><td class="n">20% → 8.3%</td></tr>
+              <tr><td>Time on monthly financial processing</td><td class="n">~94% less</td></tr>
+            </tbody>
+          </table>
+          <div class="body rise" style="--i: 3">
+            <p>A Discord bot wired to Twilio for customer text alerts, an instant repair-cost calculator that ended quoting mismatches, and a Trello webhook pipeline that chased training compliance without a manager.</p>
+          </div>
+        </section>
+
+        <!-- E1–E4 -->
+        <section class="station" id="earlier" data-stop="e1" style="--line: var(--green)" aria-labelledby="e-h">
+          <div class="sign rise"><span class="bullet b-e">E</span><h2 id="e-h">Earlier builds</h2><span class="soon">4 stops</span></div>
+          <p class="meta rise" style="--i: 1"><span>A student team project and three full-stack apps, each taken from an empty repo to a deployed app in about two weeks.</span></p>
+          <div class="sheet rise" style="--i: 2">
+            <div class="row" id="e1" data-stop="e1"><span class="bullet sm b-e">E1</span><img src="assets/img/ggcmaps-demo.gif" width="336" height="210" loading="lazy" decoding="async" alt="GGCMaps: searching a room number, then panning and zooming a floor plan" /><div><h3>GGCMaps</h3><p>Team lead of four. Searchable pan-and-zoom campus floor plans, forked 24+ times. 2017 to 2018.</p></div><div class="go"><a href="http://ggcmaps.com" target="_blank" rel="noopener">Visit ↗</a><a href="https://github.com/avestech/ggcmaps.github.io" target="_blank" rel="noopener">Code</a></div></div>
+            <div class="row" id="e2" data-stop="e2"><span class="bullet sm b-e">E2</span><img src="assets/img/stakr-demo.gif" width="336" height="210" loading="lazy" decoding="async" alt="Stakr: dragging a card from one list to another on a project board" /><div><h3>Stakr</h3><p>Trello-style boards with drag-and-drop. React, Redux, Flask. 2022.</p></div><div class="go"><a href="https://stakr.davidrivera.me" target="_blank" rel="noopener">Visit ↗</a><a href="https://github.com/Dave89rr/Stakr" target="_blank" rel="noopener">Code</a></div></div>
+            <div class="row" id="e3" data-stop="e3"><span class="bullet sm b-e">E3</span><img src="assets/img/machenist-demo.gif" width="336" height="210" loading="lazy" decoding="async" alt="Machenist: adding, scheduling, and completing tasks in a project list" /><div><h3>Machenist</h3><p>A Todoist-style task manager, date picker included. Flask, React, Redux. 2022.</p></div><div class="go"><a href="https://machenist.davidrivera.me" target="_blank" rel="noopener">Visit ↗</a><a href="https://github.com/Dave89rr/Todoist-Clone" target="_blank" rel="noopener">Code</a></div></div>
+            <div class="row" id="e4" data-stop="e4"><span class="bullet sm b-e">E4</span><img src="assets/img/rarepnt-demo.gif" width="336" height="210" loading="lazy" decoding="async" alt="RarePnT: browsing unusual travel destinations and opening a listing page" /><div><h3>RarePnT</h3><p>Airbnb-style listings for uncommon places. React, Express, Postgres. 2022.</p></div><div class="go"><a href="https://rarepnt.davidrivera.me" target="_blank" rel="noopener">Visit ↗</a><a href="https://github.com/Dave89rr/react-solo-project" target="_blank" rel="noopener">Code</a></div></div>
+          </div>
+        </section>
+
+        <!-- C1 -->
+        <section class="station" id="c1" data-stop="c1" style="--line: var(--red)" aria-labelledby="c1-h">
+          <div class="sign rise"><span class="bullet b-c">C1</span><h2 id="c1-h">Experience</h2><a class="visit" href="assets/david-rivera-resume.pdf">Résumé PDF ↓</a></div>
+          <div class="stackgrid rise" style="--i: 1" aria-label="Stack">
+            <div><h3>Languages</h3><ul><li>JavaScript · TypeScript</li><li>Python</li><li>SQL · HTML · CSS</li></ul></div>
+            <div><h3>Frameworks</h3><ul><li>React · Redux · Next.js</li><li>Node · Express</li><li>Flask · SQLAlchemy · Sequelize</li></ul></div>
+            <div><h3>Integrations &amp; AI</h3><ul><li>REST · OAuth 2.0</li><li>LLM APIs · RAG</li><li>CLI tooling · automation</li></ul></div>
+            <div><h3>Shipping</h3><ul><li>PostgreSQL · Docker · AWS</li><li>Git · Linux · Postman</li><li>TDD · Agile</li></ul></div>
+          </div>
+          <ol class="tt rise" style="--i: 2">
+            <li><span class="when">Jan 2025 – now</span><div><h3>Operations &amp; Systems Manager</h3><p>Own the scheduling, finance and integration systems across several businesses. The operations toolkit (A1) was built here.</p></div></li>
+            <li><span class="when">Sep 2023 – Jan 2025</span><div><h3>Family sabbatical</h3><p>Full-time caregiving during a major family transition, then back to work.</p></div></li>
+            <li><span class="when">May – Sep 2023</span><div><h3>Senior Software Developer <span>· Southern Siding and Gutters</span></h3><p>Fixed application-layer bottlenecks and security holes, automated unit testing, scoped features with product and UX.</p></div></li>
+            <li><span class="when">Mar – Aug 2022</span><div><h3>Software Engineering Immersive <span>· App Academy</span></h3><p>950+ hours of full-stack training. Stakr, Machenist and RarePnT (E2–E4) came out of it.</p></div></li>
+            <li><span class="when">Oct 2018 – Jan 2022</span><div><h3>Continuous Improvement Lead <span>· iRepairIT</span></h3><p>Mostly engineering: the automation suite (A2) and the onboarding that let the company triple its workforce.</p></div></li>
+            <li><span class="when">Education</span><div><h3>B.S. Information Technology <span>· Georgia Gwinnett College</span></h3><p>Software development track. GGCMaps (E1) started here.</p></div></li>
+          </ol>
+        </section>
+
+        <!-- C2 -->
+        <section class="station" id="c2" data-stop="c2" style="--line: var(--red)" aria-labelledby="c2-h">
+          <div class="sign rise"><span class="bullet b-c">C2</span><h2 id="c2-h">About</h2></div>
+          <div class="letter rise" style="--i: 1">
+            <figure><img src="assets/img/pfp-port.png" width="1080" height="810" loading="lazy" decoding="async" alt="David at his desk wearing headphones, his sleeping baby on his chest" /><figcaption>This counts as pair programming, right?</figcaption></figure>
+            <div>
+              <p>At twelve I pressed the PRGM key on a TI-83 to see what it did, and I've been writing programs ever since. I studied software development in college, then life took me elsewhere for a while.</p>
+              <p>Working in HR and operations shaped how I build. I've been the person stuck with bad software, so I design for the people who have to use it every day.</p>
+              <p>Outside of work I'm a dad first, and happiest when I'm with my family.</p>
+              <p class="sig">David</p>
+              <dl class="facts"><dt>Based</dt><dd>Smyrna / Atlanta, GA · open to remote</dd><dt>Speaks</dt><dd>English and Spanish (both native), French (intermediate)</dd><dt>Looking for</dt><dd>Front-end or full-stack product roles</dd></dl>
+            </div>
+          </div>
+        </section>
+
+        <!-- C3 -->
+        <section class="station terminus" id="c3" data-stop="c3" style="--line: var(--red)" aria-labelledby="c3-h">
+          <div class="sign rise"><span class="bullet b-c">C3</span><h2 id="c3-h">Contact · end of the line</h2></div>
+          <div class="end rise" style="--i: 1">
+            <p class="end-lead">Have something people need to use? Write to me at</p>
+            <a class="mail" href="mailto:contact@davidrivera.me">contact@davidrivera.me</a>
+            <div class="acts"><a class="btn" href="https://calendly.com/dlriverarocha" target="_blank" rel="noopener">Book a 20-min call</a><a class="txt" href="assets/david-rivera-resume.pdf">Résumé (PDF)</a></div>
+            <div class="elsewhere"><a href="https://github.com/Dave89rr" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/dlrr" target="_blank" rel="noopener">LinkedIn</a><a href="https://wellfound.com/u/dave89rr" target="_blank" rel="noopener">Wellfound</a></div>
+          </div>
+        </section>
+
+        <footer class="foot"><div class="big">David Rivera</div><p>© <span id="yr">2026</span> · Hosted on GitHub Pages</p></footer>
+      </main>
     </div>
 
     <script src="js/ti83.js" defer></script>
-    <script>
-      document.getElementById('yr').textContent = new Date().getFullYear();
-
-      const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const wait = (ms) => new Promise((r) => setTimeout(r, calm ? 0 : ms));
-      // Selected work: type out the terminal, count up the stats, fade cards in
-      if (!calm && 'IntersectionObserver' in window) {
-        const term = document.querySelector('.term');
-        const rows = [...term.children];
-        term.classList.add('armed');
-        const typeTerm = async () => {
-          const cur = document.createElement('span');
-          cur.className = 'tcur';
-          for (const row of rows) {
-            row.classList.add('on');
-            const cmd =
-              row.querySelector('.p') &&
-              row.querySelector('.p').textContent === '$' &&
-              row.lastChild;
-            if (cmd && cmd.nodeType === 3) {
-              const text = cmd.textContent.trim();
-              cmd.textContent = ' ';
-              row.append(cur);
-              for (const ch of text) {
-                cmd.textContent += ch;
-                await wait(32);
-              }
-              await wait(350);
-            } else {
-              await wait(row.querySelector('.d') ? 420 : 200);
-            }
-          }
-          rows[rows.length - 1].append(cur);
-        };
-
-        const counters = document.querySelectorAll('.stats [data-from]');
-        counters.forEach((c) => {
-          c.dataset.to = c.textContent;
-          c.textContent = c.dataset.from;
-        });
-        const countUp = () =>
-          counters.forEach((c) => {
-            const from = +c.dataset.from,
-              to = +c.dataset.to,
-              t0 = performance.now();
-            const step = (t) => {
-              const p = Math.min((t - t0) / 1400, 1);
-              c.textContent = Math.round(
-                from + (to - from) * (1 - Math.pow(1 - p, 3)),
-              );
-              if (p < 1) requestAnimationFrame(step);
-            };
-            requestAnimationFrame(step);
-          });
-
-        const once = (el, fn, opts) =>
-          new IntersectionObserver((entries, io) => {
-            if (entries.some((e) => e.isIntersecting)) {
-              io.disconnect();
-              fn();
-            }
-          }, opts).observe(el);
-        once(term, typeTerm, { threshold: 0.5 });
-        once(document.querySelector('.stats'), countUp, { threshold: 0.5 });
-
-        document.querySelectorAll('.feature, .mini > li').forEach((el, i) => {
-          el.classList.add('reveal');
-          if (el.matches('.mini > li'))
-            el.style.transitionDelay = (i % 3) * 0.1 + 's';
-          once(el, () => el.classList.add('in'), {
-            rootMargin: '0px 0px -10% 0px',
-          });
-        });
-      }
-    </script>
+    <script src="js/line.js" defer></script>
   </body>
 </html>

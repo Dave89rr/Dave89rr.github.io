@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,400;0,600;0,800;0,900;1,400&family=VT323&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,400;0,600;0,800;0,900;1,400&display=swap"
     />
     <link rel="stylesheet" href="css/site.css" />
     <script>document.documentElement.classList.add('js');</script>
@@ -77,54 +77,6 @@
         </nav>
 
         <header class="hero" id="start" data-stop="start">
-          <figure class="calc-fig">
-            <div class="calc">
-              <div class="calc-top">
-                <span>TI-83</span><span>TEXAS INSTRUMENTS</span>
-              </div>
-              <div class="lcd">
-                <div
-                  class="lcd-screen"
-                  role="img"
-                  aria-label='A TI-83 calculator screen running a short program: PROGRAM:DAVID, ClrHome, Disp "HELLO, WORLD", Disp "SINCE AGE 12", Input "HIRE? ", Str1'
-                >
-                  <div>PROGRAM:DAVID</div>
-                  <div>:ClrHome</div>
-                  <div>:Disp "HELLO, WORLD"</div>
-                  <div>:Disp "SINCE AGE 12"</div>
-                  <div>:Input "HIRE? ",Str1<span class="cur"></span></div>
-                </div>
-                <input
-                  class="lcd-in"
-                  type="text"
-                  tabindex="-1"
-                  autocomplete="off"
-                  autocapitalize="characters"
-                  spellcheck="false"
-                  aria-label="Calculator input"
-                />
-                <div class="lcd-edit" hidden>
-                  <div class="lcd-edit-head"></div>
-                  <textarea
-                    rows="5"
-                    autocomplete="off"
-                    autocapitalize="off"
-                    spellcheck="false"
-                    aria-label="Program editor"
-                  ></textarea>
-                </div>
-              </div>
-              <div class="keys">
-                <span aria-hidden="true">Y=</span
-                ><span aria-hidden="true">WINDOW</span
-                ><button type="button" class="hot" data-key="prgm">PRGM</button
-                ><span aria-hidden="true">VARS</span
-                ><button type="button" data-key="clear">CLEAR</button>
-              </div>
-              <p class="sr-only" aria-live="polite"></p>
-            </div>
-            <figcaption class="calc-cap">Where it started: the PRGM key.</figcaption>
-          </figure>
           <h1 class="rise">David Rivera</h1>
           <p class="what rise" style="--i: 1">Front-end-led full-stack developer in Atlanta. I build interfaces people use every day.</p>
           <div class="acts rise" style="--i: 2">
@@ -288,7 +240,6 @@
       </main>
     </div>
 
-    <script src="js/ti83.js" defer></script>
     <script src="js/line.js" defer></script>
   </body>
 </html>

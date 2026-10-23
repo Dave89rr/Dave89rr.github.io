@@ -8,8 +8,6 @@
   --select:#F2B73A;
   --ease-out:cubic-bezier(.23,1,.32,1); --ease-io:cubic-bezier(.77,0,.175,1);
   --sans:"Overpass","Helvetica Neue",Arial,sans-serif;
-  --pixel:"VT323",ui-monospace,monospace; /* taste-skill-ignore: the TI-83 LCD face */
-  --calc:#2A2D33; --lcd:#B7C1A3; --lcd-ink:#1E281A;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -25,7 +23,7 @@ a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:2px}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 h1,h2,h3{margin:0;font-weight:900;letter-spacing:-.025em;line-height:.95;text-wrap:balance}
 p{margin:0}
-.sr,.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .skip:focus{width:auto;height:auto;clip-path:none;left:16px;top:12px;z-index:9;background:var(--ink);color:var(--ground);padding:10px 16px;border-radius:6px;font-weight:800;text-decoration:none}
 
 /* ---------- the split stage ---------- */
@@ -72,42 +70,18 @@ p{margin:0}
 .nav a{text-decoration:none}
 @media (hover:hover) and (pointer:fine){.nav a:hover{text-decoration:underline}}
 
-.hero{min-height:calc(100svh - 92px);display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:40px}
+.hero{min-height:calc(100svh - 92px);display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:64px}
 .hero h1{font-size:clamp(60px,6.9vw,112px);letter-spacing:-.035em}
-.hero .what{margin-top:32px;font-size:26px;line-height:1.3;max-width:36ch}
+.hero .what{margin-top:32px;font-size:26px;line-height:1.3;max-width:32ch}
 .acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:40px}
 .btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--ground);text-decoration:none;font-weight:800;font-size:18px;padding:16px 26px 14px;border-radius:6px;transition:transform 160ms var(--ease-out),background-color 200ms ease}
 .btn:active{transform:scale(.97)}
 .txt{font-weight:800}
-.next{margin-top:48px;display:flex;align-items:center;gap:14px;font-size:16px;text-decoration:none;font-weight:600}
+.next{margin-top:72px;display:flex;align-items:center;gap:14px;font-size:16px;text-decoration:none;font-weight:600}
 .bullet{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;font:900 18px/1 var(--sans);padding-top:3px;flex:none}
 .b-i{background:var(--gold);color:#141516}.b-a{background:var(--blue);color:#fff}
 .b-e{background:var(--green);color:#fff}.b-c{background:var(--red);color:#fff}
 
-/* the TI-83 waits at the start of the line; js/ti83.js drives it */
-.calc-fig{margin:0 0 auto;align-self:flex-end;width:min(300px,100%)}
-.calc{background:var(--calc);border-radius:16px 16px 26px 26px;padding:16px 16px 20px}
-.calc-top{display:flex;justify-content:space-between;font-size:11px;font-weight:800;letter-spacing:.12em;color:#8C929C;margin-bottom:10px}
-.lcd{background:var(--lcd);color:var(--lcd-ink);font-family:var(--pixel);font-size:20px;line-height:1.08;padding:12px 14px;border-radius:4px;background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.035) 0 1px,transparent 1px 3px);height:182px;overflow:hidden;position:relative;cursor:pointer} /* taste-skill-ignore: LCD scanlines on a literal calculator screen */
-.lcd-screen{height:calc(1.08em * 7);overflow:hidden}
-.lcd-screen>div{white-space:pre-wrap;overflow-wrap:anywhere;min-height:1.08em}
-.lcd-screen .on{background:var(--lcd-ink);color:var(--lcd);animation:blink-inv 1.1s steps(1) infinite}
-@keyframes blink-inv{50%{background:transparent;color:var(--lcd-ink)}}
-.lcd-screen .hit,.lcd-screen [data-tab]{cursor:pointer}
-.lcd-edit textarea{height:calc(1.08em * 6);margin:0;padding:0;border:0;outline:0;resize:none;background:transparent;color:inherit;font:inherit;line-height:inherit;caret-color:var(--lcd-ink);scrollbar-width:none}
-.lcd-screen .r{display:block;text-align:right}
-.lcd-screen .inv{background:var(--lcd-ink);color:var(--lcd)}
-.lcd-screen a{color:inherit}
-.lcd-in{position:absolute;left:0;bottom:0;width:1px;height:1px;opacity:0;font-size:16px;border:0;padding:0} /* taste-skill-ignore: hidden capture input, not a rule */
-.lcd .cur{display:inline-block;width:.5em;height:.85em;background:var(--lcd-ink);vertical-align:-.08em;animation:blink 1.1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.keys{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:14px}
-.keys>*{font:800 10px var(--sans);text-align:center;color:#D9DCE1;background:#3B3F47;border-radius:4px;padding:6px 0 4px;border:0}
-.keys button{cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform 120ms var(--ease-out)}
-.keys button:active{transform:scale(.94)}
-.keys button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.keys .hot{background:var(--gold);color:#141516}
-.calc-cap{font-size:16px;color:var(--soft);margin-top:10px;text-align:right}
 
 /* a station: the sign, then the platform */
 .station{padding-top:176px}
@@ -207,9 +181,6 @@ table.ba{margin-top:28px;width:100%;border-collapse:collapse;font-size:16px}
   .ride{padding:0 16px}
   .nav{justify-content:space-between;gap:12px;padding:18px 0;font-size:16px}
   .hero{min-height:auto;padding:40px 0 24px}
-  .calc-fig{order:1;align-self:flex-start;margin:48px 0 0}
-  .calc-cap{text-align:left}
-  .hero .next{order:2}
   .stackgrid{grid-template-columns:repeat(2,minmax(0,1fr));padding:18px}
   .hero h1{font-size:17.5vw}
   .station{padding-top:112px}
@@ -231,7 +202,6 @@ table.ba{margin-top:28px;width:100%;border-collapse:collapse;font-size:16px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .train,.btn,.key button,.shot img,.keys button{transition:none}
-  .lcd .cur,.lcd-screen .on{animation:none}
+  .train,.btn,.key button,.shot img{transition:none}
   .js .rise{transform:none;transition:opacity 300ms ease}
 }

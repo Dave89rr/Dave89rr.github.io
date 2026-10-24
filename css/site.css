@@ -74,6 +74,7 @@ p{margin:0}
 .hero{min-height:calc(100svh - 92px);display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:64px}
 .hero h1{font-size:clamp(60px,6.9vw,112px);letter-spacing:-.035em}
 .hero .what{margin-top:32px;font-size:26px;line-height:1.3;max-width:32ch}
+.hero .avail{margin-top:14px;font-size:18px;color:var(--soft)}
 .acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:40px}
 .btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--ground);text-decoration:none;font-weight:800;font-size:18px;padding:16px 26px 14px;border-radius:6px;transition:transform 160ms var(--ease-out),background-color 200ms ease}
 .btn:active{transform:scale(.97)}
@@ -106,8 +107,6 @@ p{margin:0}
 /* Dispensed: no screenshot yet, so its own mark on its own field */
 .dispensed{background:#F6F2E8;display:grid;place-items:center;aspect-ratio:16/10;border-radius:6px;margin-top:28px}
 .dispensed img{width:min(58%,360px)}
-.tracker{background:#111F34;display:grid;place-items:center;aspect-ratio:16/10;border-radius:6px;margin-top:28px}
-.tracker img{width:min(34%,220px)}
 
 /* Automation: the terminal is the picture */
 pre.term{margin:28px 0 0;background:#0F1112;color:#D9E4DF;border-radius:6px;padding:26px 28px;font:16px/1.7 ui-monospace,"SFMono-Regular",Menlo,monospace;overflow-x:auto} /* taste-skill-ignore: literal command output */

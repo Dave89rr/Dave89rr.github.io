@@ -3,10 +3,9 @@
   document.getElementById('yr').textContent = new Date().getFullYear();
   const STOPS = [
     {id:'start',code:'',name:'Start',x:80,y:30,line:'gold'},
-    {id:'i1',code:'I1',name:'GamersAtlas',x:80,y:90,line:'gold'},
-    {id:'i2',code:'I2',name:'Combat Tracker',x:80,y:145,line:'gold'},
-    {id:'i3',code:'I3',name:'River Nest',x:80,y:200,line:'gold'},
-    {id:'i4',code:'I4',name:'Dispensed',x:80,y:255,line:'gold'},
+    {id:'i1',code:'I1',name:'GamersAtlas',x:80,y:95,line:'gold'},
+    {id:'i2',code:'I2',name:'Combat Tracker',x:80,y:160,line:'gold'},
+    {id:'i3',code:'I3',name:'River Nest',x:80,y:225,line:'gold'},
     {id:'a1',code:'A1',name:'Ops toolkit',x:120,y:335,line:'blue'},
     {id:'a2',code:'A2',name:'iRepairIT',x:120,y:390,line:'blue'},
     {id:'e1',code:'E1',name:'GGCMaps',x:160,y:470,line:'green'},
@@ -77,7 +76,7 @@
     ev.preventDefault();
     const code = inp.value.trim().toUpperCase();
     const s = STOPS.find(x=>x.code===code);
-    if (!s) { msg.className='key-msg err'; msg.textContent = code ? `No stop ${code}. Try I1–I4, A1–A2, E1–E4, C1–C3.` : 'Type a stop code, like I2.'; return; }
+    if (!s) { msg.className='key-msg err'; msg.textContent = code ? `No stop ${code}. Try I1–I3, A1–A2, E1–E4, C1–C3.` : 'Type a stop code, like I2.'; return; }
     msg.className='key-msg'; msg.textContent = `Now arriving: ${s.name}`;
     jump(s.id);
     document.getElementById(s.id).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});

@@ -67,7 +67,7 @@ p{margin:0}
 /* right: the platforms, scrolling */
 .ride{min-width:0;padding:0 72px}
 .nav{display:flex;justify-content:flex-end;gap:28px;padding:30px 0;font-size:16px;font-weight:600}
-.nav a{text-decoration:none}
+.nav a{text-decoration:none;white-space:nowrap}
 @media (hover:hover) and (pointer:fine){.nav a:hover{text-decoration:underline}}
 
 .hero{min-height:calc(100svh - 92px);display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:64px}
@@ -200,6 +200,9 @@ table.ba{margin-top:28px;width:100%;border-collapse:collapse;font-size:16px}
   .nav a{font-size:16px}
   .ba td{padding:12px}.ba td.n{font-size:21px}
 }
+/* small phones: keep all five nav links on one line */
+@media (max-width:374px){.nav{gap:0}}
+@media (max-width:340px){.nav a{font-size:14px}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .train,.btn,.key button,.shot img{transition:none}

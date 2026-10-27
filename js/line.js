@@ -3,9 +3,9 @@
   document.getElementById('yr').textContent = new Date().getFullYear();
   const STOPS = [
     {id:'start',code:'',name:'Start',x:80,y:30,line:'gold'},
-    {id:'i1',code:'I1',name:'GamersAtlas',x:80,y:95,line:'gold'},
-    {id:'i2',code:'I2',name:'Combat Tracker',x:80,y:160,line:'gold'},
-    {id:'i3',code:'I3',name:'River Nest',x:80,y:225,line:'gold'},
+    {id:'i1',code:'I1',name:'River Nest',x:80,y:95,line:'gold'},
+    {id:'i2',code:'I2',name:'GamersAtlas',x:80,y:160,line:'gold'},
+    {id:'i3',code:'I3',name:'Combat Tracker',x:80,y:225,line:'gold'},
     {id:'a1',code:'A1',name:'Ops toolkit',x:120,y:335,line:'blue'},
     {id:'a2',code:'A2',name:'iRepairIT',x:120,y:390,line:'blue'},
     {id:'e1',code:'E1',name:'GGCMaps',x:160,y:470,line:'green'},
@@ -34,12 +34,46 @@
   const core = train.querySelector('.core');
   const strip = {code:document.getElementById('s-code'),name:document.getElementById('s-name'),el:document.querySelector('.strip')};
   const bulletClass = {gold:'b-i',blue:'b-a',green:'b-e',red:'b-c'};
+  // the track's corners, matching the line paths in the SVG, so the train rides the bends
+  const TRACK = [[80,30],[80,255],[120,295],[120,390],[160,430],[160,620],[200,660],[200,810]];
+  const LEN = [0];
+  for (let i=1;i<TRACK.length;i++) LEN.push(LEN[i-1] + Math.hypot(TRACK[i][0]-TRACK[i-1][0], TRACK[i][1]-TRACK[i-1][1]));
+  // distance along the track to a point on it
+  function along(x,y){
+    let best = 0, bestGap = Infinity;
+    for (let i=1;i<TRACK.length;i++){
+      const [ax,ay]=TRACK[i-1], [bx,by]=TRACK[i], len=LEN[i]-LEN[i-1];
+      const t = Math.max(0, Math.min(1, ((x-ax)*(bx-ax)+(y-ay)*(by-ay))/(len*len)));
+      const gap = Math.hypot(ax+t*(bx-ax)-x, ay+t*(by-ay)-y);
+      if (gap < bestGap){ bestGap = gap; best = LEN[i-1]+t*len; }
+    }
+    return best;
+  }
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  let ride = null, at = null;
+  function moveTrain(x,y){
+    const to = `translate(${x}px,${y}px)`;
+    if (!at || still.matches){ if (ride) ride.cancel(); train.style.transform = to; at = [x,y]; return; }
+    // start from wherever the train is now, even mid-ride
+    const m = new DOMMatrixReadOnly(getComputedStyle(train).transform);
+    if (ride) ride.cancel();
+    const d0 = along(m.e,m.f), d1 = along(x,y);
+    const pts = [[m.e,m.f,d0]];
+    const corners = TRACK.map((p,i)=>[p[0],p[1],LEN[i]]).filter(p => (p[2]-d0)*(p[2]-d1) < 0);
+    if (d1 < d0) corners.reverse();
+    pts.push(...corners, [x,y,d1]);
+    const span = Math.abs(d1-d0) || 1;
+    train.style.transform = to; at = [x,y];
+    ride = train.animate(pts.map(p => ({transform:`translate(${p[0]}px,${p[1]}px)`, offset:Math.abs(p[2]-d0)/span})),
+      {duration:700, easing:'cubic-bezier(.77,0,.175,1)'});
+  }
+
   let current = null;
   function arrive(id){
     const s = STOPS.find(x=>x.id===id); if(!s || s.id===current) return;
     if (current) nodes[current].classList.remove('on');
     nodes[id].classList.add('on'); current = id;
-    train.style.transform = `translate(${s.x}px,${s.y}px)`;
+    moveTrain(s.x, s.y);
     core.style.fill = `var(--${s.line})`;
     document.querySelectorAll('.sheet .row').forEach(r=>r.classList.toggle('on', r.id===id));
     const show = s.id==='start' ? STOPS[1] : s;

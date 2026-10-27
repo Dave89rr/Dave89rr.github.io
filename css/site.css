@@ -44,7 +44,6 @@ p{margin:0}
 @media (hover:hover) and (pointer:fine){.map .stop a:hover text:not(.code){text-decoration:underline;text-underline-offset:4px}}
 .map .stop a:focus-visible{outline:none}
 .map .stop a:focus-visible text{fill:var(--gold-t)}
-.train{transition:transform 700ms var(--ease-io)}
 .train circle{fill:var(--sign);stroke:var(--sign-ink);stroke-width:5}
 .train .core{stroke:none;fill:var(--gold)}
 
@@ -155,6 +154,7 @@ table.ba{margin-top:28px;width:100%;border-collapse:collapse;font-size:16px}
 .end{margin-top:40px}
 .end-lead{font-size:26px;line-height:1.3;margin-bottom:12px}
 .end .mail{display:inline-block;font-weight:900;font-size:clamp(30px,3.4vw,49px);letter-spacing:-.025em;text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:6px;text-underline-offset:.18em}
+.end-note{margin-top:14px;color:var(--soft)}
 .end .acts{margin-top:32px}
 .elsewhere{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:36px;font-weight:800;font-size:16px}
 .foot{padding:200px 0 40px}

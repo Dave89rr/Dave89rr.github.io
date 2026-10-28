@@ -68,6 +68,62 @@
       {duration:700, easing:'cubic-bezier(.77,0,.175,1)'});
   }
 
+  // the phone strip: the station name opens a route map; the button rides on, or turns back at the terminus
+  const here = document.getElementById('s-here'), nextBtn = document.getElementById('s-next'), nextT = document.getElementById('s-next-t');
+  const list = document.getElementById('s-list'), scrim = document.getElementById('s-scrim');
+  const LAST = STOPS[STOPS.length-1].id;
+  // the earlier builds share one section, so they share one row
+  const ROWS = STOPS.filter(s => s.code && !/^E[2-4]$/.test(s.code))
+    .map(s => s.id==='e1' ? {...s, code:'E', name:'Earlier builds', target:'earlier'} : {...s, target:s.id});
+  const rowFor = {};
+  ROWS.forEach((r,n) => {
+    const li = document.createElement('li'); li.style.setProperty('--c',`var(--${r.line})`); li.style.setProperty('--n',n);
+    const a = document.createElement('a'); a.href = '#'+r.target;
+    const b = document.createElement('span'); b.className = 'bullet '+bulletClass[r.line]; b.textContent = r.code;
+    a.append(b, r.name);
+    a.addEventListener('click', ev => {
+      ev.preventDefault(); closeMenu(false); go(r.id, r.target);
+      // keyboard and screen-reader users land where they jumped
+      const t = document.getElementById(r.target); t.setAttribute('tabindex','-1'); t.focus({preventScroll:true});
+    });
+    li.append(a); list.append(li); rowFor[r.id] = a;
+  });
+  let open = false;
+  function openMenu(){
+    open = true; strip.el.classList.add('open'); here.setAttribute('aria-expanded','true');
+    document.documentElement.style.overflow = 'hidden';
+    (list.querySelector('[aria-current]') || list.querySelector('a')).focus({preventScroll:true});
+  }
+  function closeMenu(refocus = true){
+    if (!open) return;
+    open = false; strip.el.classList.remove('open'); here.setAttribute('aria-expanded','false');
+    document.documentElement.style.overflow = '';
+    if (refocus) here.focus({preventScroll:true});
+  }
+  here.addEventListener('click', () => open ? closeMenu() : openMenu());
+  scrim.addEventListener('click', () => closeMenu(false));
+  addEventListener('keydown', ev => { if (ev.key==='Escape' && open) closeMenu(); });
+  strip.el.addEventListener('focusout', ev => { if (open && ev.relatedTarget && !strip.el.contains(ev.relatedTarget)) closeMenu(false); });
+  matchMedia('(max-width:900px)').addEventListener('change', e => { if (!e.matches) closeMenu(false); });
+  function go(id, target){
+    jump(id);
+    const smooth = still.matches ? 'auto' : 'smooth';
+    if (id==='start') scrollTo({top:0, behavior:smooth});
+    else document.getElementById(target).scrollIntoView({behavior:smooth});
+  }
+  // the label blurs out and back in, so the swap reads as one button changing its mind
+  let swapping = null;
+  function setNext(label){
+    if (nextT.textContent === label && !swapping) return;
+    if (swapping) swapping.cancel();
+    if (still.matches || !nextT.animate){ nextT.textContent = label; return; }
+    swapping = nextT.animate([{opacity:1,filter:'blur(0)'},{opacity:0,filter:'blur(2px)'}], {duration:90, easing:'ease'});
+    swapping.onfinish = () => {
+      swapping = null; nextT.textContent = label;
+      nextT.animate([{opacity:0,filter:'blur(2px)'},{opacity:1,filter:'blur(0)'}], {duration:140, easing:'cubic-bezier(.23,1,.32,1)'});
+    };
+  }
+
   let current = null;
   function arrive(id){
     const s = STOPS.find(x=>x.id===id); if(!s || s.id===current) return;
@@ -78,7 +134,12 @@
     document.querySelectorAll('.sheet .row').forEach(r=>r.classList.toggle('on', r.id===id));
     const show = s.id==='start' ? STOPS[1] : s;
     strip.code.textContent = show.code; strip.code.className = 'bullet '+bulletClass[show.line];
+    const last = s.id===LAST;
     strip.name.textContent = show.name; strip.el.style.setProperty('--strip-line',`var(--${show.line})`);
+    here.setAttribute('aria-label', `Route map. ${last ? 'Last stop' : s.id==='start' ? 'Next stop' : 'Now at'}: ${show.code} ${show.name}`);
+    const rid = /^e[1-4]$/.test(s.id) ? 'e1' : s.id;
+    for (const [k,a] of Object.entries(rowFor)) k===rid ? a.setAttribute('aria-current','location') : a.removeAttribute('aria-current');
+    setNext(last ? 'Back to start ↑' : 'Next stop ↓');
   }
   arrive('start');
 
@@ -116,9 +177,10 @@
     document.getElementById(s.id).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
     history.replaceState(null,'','#'+s.id); inp.value='';
   });
-  document.getElementById('s-next').addEventListener('click', () => {
-    const i = STOPS.findIndex(x=>x.id===current); const n = STOPS[Math.min(i+1, STOPS.length-1)];
-    jump(n.id);
-    document.getElementById(n.id).scrollIntoView({behavior:'smooth'});
+  nextBtn.addEventListener('click', () => {
+    closeMenu(false);
+    if (current===LAST) { go('start'); return; }
+    const n = STOPS[STOPS.findIndex(x=>x.id===current)+1];
+    go(n.id, n.id);
   });
 })();

@@ -37,9 +37,14 @@
   <body>
     <a class="sr skip" href="#i1">Skip to the work</a>
 
-    <div class="strip" aria-hidden="true">
-      <span class="bullet b-i" id="s-code">I1</span><b id="s-name">River Nest</b>
-      <button type="button" id="s-next" tabindex="-1">Next stop ↓</button>
+    <div class="strip" id="strip">
+      <button type="button" class="s-here" id="s-here" aria-expanded="false" aria-controls="s-menu">
+        <span class="bullet b-i" id="s-code">I1</span><b id="s-name">River Nest</b>
+        <svg class="s-chev" viewBox="0 0 12 8" width="12" height="8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </button>
+      <button type="button" class="s-next" id="s-next"><span id="s-next-t">Next stop ↓</span></button>
+      <div class="s-scrim" id="s-scrim"></div>
+      <div class="s-drop"><nav class="s-menu" id="s-menu" aria-label="Route map"><ol id="s-list"></ol></nav></div>
     </div>
 
     <div class="stage">

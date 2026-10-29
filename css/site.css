@@ -125,7 +125,11 @@ table.ba{margin-top:28px;width:100%;border-collapse:collapse;font-size:16px}
 .sheet img{width:168px;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:4px}
 .sheet h3{font-size:26px;letter-spacing:-.015em}
 .sheet p{font-size:16px;color:var(--soft);margin-top:4px}
-.sheet .go{display:grid;gap:4px;text-align:right;font-weight:800;font-size:16px;white-space:nowrap}
+.sheet .go{display:flex;flex-direction:column;align-items:flex-end;font-size:16px;white-space:nowrap}
+.sheet .go a{display:inline-block;padding:8px 0 8px 12px;font-weight:800;transition:transform 160ms var(--ease-out),color 150ms ease}
+.sheet .go a+a{font-weight:600;color:var(--soft);text-decoration:none}
+.sheet .go a:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.sheet .go a+a:hover{color:var(--ink);text-decoration:underline}}
 .bullet.sm{width:38px;height:38px;font-size:16px}
 
 /* Career: the stack, then the timetable */
@@ -219,7 +223,8 @@ table.ba{margin-top:28px;width:100%;border-collapse:collapse;font-size:16px}
   .body{grid-template-columns:1fr;gap:16px}
   .sheet .row{grid-template-columns:auto 1fr;gap:12px 14px}
   .sheet img{grid-column:1/-1;width:100%;order:-1}
-  .sheet .go{grid-column:1/-1;display:flex;gap:24px;text-align:left}
+  .sheet .go{grid-column:1/-1;flex-direction:row;align-items:center;gap:24px}
+  .sheet .go a{padding:10px 0}
   .tt li{grid-template-columns:1fr;gap:4px;padding:18px 14px}
   .letter{grid-template-columns:1fr}
   pre.term{font-size:15px;padding:18px;white-space:pre-wrap;overflow-wrap:anywhere}

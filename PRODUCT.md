@@ -42,7 +42,7 @@ Visitors arrive from a résumé, LinkedIn, Wellfound, or a direct referral. They
 
 - Screenshots/GIFs: assets/img/{rivernest,gamersatlas,tracker}.jpg and assets/img/{ggcmaps,stakr,machenist,rarepnt}-demo.gif.
 - Photo: assets/img/pfp-port.png (David at his desk with his sleeping baby on his chest).
-- Résumé PDF: assets/david-rivera-resume.pdf.
+- Résumé PDF: assets/David_Rivera_Resume.pdf.
 - Real numbers on the page: iRepairIT training compliance 64% → 98%; monthly financial processing 12 hours → 45 min; River Nest listing sync saves about 40–60 min per listing (his estimate). Turnover 20% → 8.3% and 3× team growth are true but kept off the work section (not coding results).
 - Pirani role: integrations and part of finance across four businesses; no scheduling. Southern Exteriors' app is under NDA (don't name it), and his search fix was not adopted (claim no speed-up).
 - No testimonials, client logos, or press. Do not invent any.
